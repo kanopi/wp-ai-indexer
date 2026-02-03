@@ -23,6 +23,14 @@
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\""
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kanopi/wp-ai-indexer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kanopi/wp-ai-indexer/issues"
+  },
+  "homepage": "https://github.com/kanopi/wp-ai-indexer#readme",
   "keywords": [
     "wordpress",
     "ai",
@@ -30,7 +38,8 @@
     "pinecone",
     "openai",
     "embeddings",
-    "vector-search"
+    "vector-search",
+    "rag"
   ],
   "author": "Kanopi Studios",
   "license": "MIT",
