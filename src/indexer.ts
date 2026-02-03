@@ -136,7 +136,7 @@ export class Indexer {
         } else {
           // Error occurred
           this.progress.errors++;
-          const error = result.reason;
+          const error = (result as PromiseRejectedResult).reason;
           const errorMsg = `Failed to process post ${doc.id}: ${error.message}`;
           console.error(`❌ ${errorMsg}`);
           errors.push({
