@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "type": "post",
+    "date": "2024-01-01T10:00:00",
+    "modified": "2024-01-02T10:00:00",
+    "slug": "test-post",
+    "status": "publish",
+    "link": "https://example.com/test-post",
+    "title": {
+      "rendered": "Test Post"
+    },
+    "content": {
+      "rendered": "<p>This is test content for the post. It contains some text that will be chunked and embedded.</p>"
+    },
+    "excerpt": {
+      "rendered": "<p>This is a test excerpt</p>"
+    },
+    "author": 1,
+    "categories": [1, 2],
+    "tags": [1, 2, 3]
+  },
+  {
+    "id": 2,
+    "type": "page",
+    "date": "2024-01-03T10:00:00",
+    "modified": "2024-01-03T10:00:00",
+    "slug": "test-page",
+    "status": "publish",
+    "link": "https://example.com/test-page",
+    "title": {
+      "rendered": "Test Page"
+    },
+    "content": {
+      "rendered": "<p>This is a test page with some content.</p>"
+    },
+    "excerpt": {
+      "rendered": ""
+    },
+    "author": 1
+  }
+]

@@ -1,0 +1,25 @@
+# Source files (only ship dist)
+src/
+tsconfig.json
+
+# Development files
+.env
+.env.*
+*.md
+!README.md
+
+# Tests
+test/
+*.test.ts
+*.spec.ts
+
+# Build artifacts
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore

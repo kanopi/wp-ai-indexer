@@ -1,0 +1,62 @@
+{
+  "name": "@kanopi/wp-ai-indexer",
+  "version": "1.0.0",
+  "description": "Shared Node-based indexer for WordPress AI plugins (Chatbot & Search)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "wp-ai-indexer": "./bin/wp-ai-indexer.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "index": "node bin/wp-ai-indexer.js index",
+    "clean": "node bin/wp-ai-indexer.js clean",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:ci": "vitest run --coverage --reporter=verbose",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\""
+  },
+  "keywords": [
+    "wordpress",
+    "ai",
+    "indexer",
+    "pinecone",
+    "openai",
+    "embeddings",
+    "vector-search"
+  ],
+  "author": "Kanopi Studios",
+  "license": "MIT",
+  "dependencies": {
+    "@pinecone-database/pinecone": "^2.0.0",
+    "openai": "^4.20.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.0",
+    "commander": "^11.1.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "nock": "^13.4.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
