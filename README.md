@@ -381,6 +381,93 @@ The indexer includes automatic retry logic. If you consistently hit rate limits:
 - Reduce concurrency with `WP_AI_CONCURRENCY`
 - Increase timeout with `WP_AI_TIMEOUT_MS`
 
+## Testing
+
+### Run Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Run in watch mode
+npm run test:watch
+
+# Run unit tests only
+npm run test:unit
+
+# Run integration tests only
+npm run test:integration
+```
+
+### Test Structure
+
+- **Unit Tests**: Test individual components in isolation (`tests/unit/`)
+- **Integration Tests**: Test component interactions (`tests/integration/`)
+- **Fixtures**: Mock data for testing (`tests/mocks/`)
+
+## Contributing
+
+We welcome contributions! Here's how to get started:
+
+### Development Setup
+
+1. **Fork and Clone**
+   ```bash
+   git clone https://github.com/your-username/wp-ai-indexer.git
+   cd wp-ai-indexer
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Build**
+   ```bash
+   npm run build
+   ```
+
+4. **Run Tests**
+   ```bash
+   npm test
+   ```
+
+### Guidelines
+
+- **Code Style**: Follow existing patterns, use ESLint and Prettier
+  ```bash
+  npm run lint
+  npm run format
+  ```
+
+- **Tests**: Add tests for new features
+  - Unit tests for individual functions
+  - Integration tests for component interactions
+  - Maintain or improve code coverage
+
+- **Commits**: Use clear, descriptive commit messages
+  - Format: `type: description`
+  - Types: `feat`, `fix`, `docs`, `test`, `refactor`, `chore`
+  - Example: `feat: add retry logic for embeddings API`
+
+- **Pull Requests**:
+  - Reference related issues
+  - Provide clear description of changes
+  - Ensure CI passes
+  - Update documentation as needed
+
+### Reporting Issues
+
+When reporting bugs, please include:
+- Node.js version (`node --version`)
+- Package version (`npm list @kanopi/wp-ai-indexer`)
+- WordPress version
+- Error messages and stack traces
+- Steps to reproduce
+
 ## License
 
 MIT
