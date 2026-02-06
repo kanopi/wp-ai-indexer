@@ -7,11 +7,14 @@ tsconfig.json
 .env.*
 *.md
 !README.md
+!LICENSE
 
 # Tests
 test/
+tests/
 *.test.ts
 *.spec.ts
+vitest.config.ts
 
 # Build artifacts
 *.tsbuildinfo
@@ -19,7 +22,25 @@ test/
 # IDE
 .vscode/
 .idea/
+.claude/
 
 # Git
 .git/
 .gitignore
+.gitattributes
+
+# CI/CD
+.circleci/
+.github/
+
+# Issue tracking
+.beads/
+
+# Linting and formatting
+.eslintrc.js
+.prettierrc
+.editorconfig
+
+# Documentation (keep only README and LICENSE)
+PLAN.md
+AGENTS.md
