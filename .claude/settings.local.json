@@ -22,7 +22,8 @@
       "Bash(npm pack:*)",
       "Bash(tar:*)",
       "Bash(npm publish:*)",
-      "Bash(npm pkg:*)"
+      "Bash(npm pkg:*)",
+      "Bash(git pull:*)"
     ]
   }
 }
