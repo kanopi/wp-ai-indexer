@@ -19,7 +19,7 @@ describe('SettingsManager', () => {
   describe('fetchSettings', () => {
     it('should fetch and validate settings from WordPress', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       const settings = await manager.fetchSettings();
@@ -32,7 +32,7 @@ describe('SettingsManager', () => {
 
     it('should cache settings after first fetch', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       const settings1 = await manager.fetchSettings();
@@ -64,7 +64,7 @@ describe('SettingsManager', () => {
       const authManager = new SettingsManager(authConfig);
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .basicAuth({ user: 'testuser', pass: 'testpass' })
         .reply(200, settingsFixture);
 
@@ -75,7 +75,7 @@ describe('SettingsManager', () => {
 
     it('should throw error on HTTP error response', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(404, 'Not Found');
 
       await expect(manager.fetchSettings()).rejects.toThrow(/404/);
@@ -83,7 +83,7 @@ describe('SettingsManager', () => {
 
     it('should throw error on network error', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .replyWithError('Network error');
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Network error/);
@@ -94,7 +94,7 @@ describe('SettingsManager', () => {
       const timeoutManager = new SettingsManager(timeoutConfig);
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .delay(200)
         .reply(200, settingsFixture);
 
@@ -108,7 +108,7 @@ describe('SettingsManager', () => {
       delete (invalidData as any).chunk_size;
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Missing required setting/);
@@ -118,7 +118,7 @@ describe('SettingsManager', () => {
       const invalidData = { ...settingsFixture, schema_version: 999 };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Unsupported schema version/);
@@ -128,7 +128,7 @@ describe('SettingsManager', () => {
       const invalidData = { ...settingsFixture, embedding_dimension: 0 };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Invalid embedding_dimension/);
@@ -138,7 +138,7 @@ describe('SettingsManager', () => {
       const invalidData = { ...settingsFixture, embedding_dimension: 20000 };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Invalid embedding_dimension/);
@@ -148,7 +148,7 @@ describe('SettingsManager', () => {
       const invalidData = { ...settingsFixture, chunk_size: 50 };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Invalid chunk_size/);
@@ -158,7 +158,7 @@ describe('SettingsManager', () => {
       const invalidData = { ...settingsFixture, chunk_size: 20000 };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Invalid chunk_size/);
@@ -168,7 +168,7 @@ describe('SettingsManager', () => {
       const invalidData = { ...settingsFixture, chunk_overlap: -10 };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Invalid chunk_overlap/);
@@ -178,7 +178,7 @@ describe('SettingsManager', () => {
       const invalidData = { ...settingsFixture, chunk_size: 500, chunk_overlap: 500 };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Invalid chunk_overlap/);
@@ -188,7 +188,7 @@ describe('SettingsManager', () => {
       const invalidData = { ...settingsFixture, pinecone_index_name: '' };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, invalidData);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Pinecone index/);
@@ -198,7 +198,7 @@ describe('SettingsManager', () => {
       const data = { ...settingsFixture, post_types: undefined };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, data);
 
       await expect(manager.fetchSettings()).rejects.toThrow(/Missing required setting: post_types/);
@@ -212,7 +212,7 @@ describe('SettingsManager', () => {
       };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, data);
 
       const settings = await manager.fetchSettings();
@@ -223,7 +223,7 @@ describe('SettingsManager', () => {
 
     it('should extract domain from wpApiBase', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       const settings = await manager.fetchSettings();
@@ -263,7 +263,7 @@ describe('SettingsManager', () => {
       };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, data);
 
       const settings = await manager.fetchSettings();
@@ -282,7 +282,7 @@ describe('SettingsManager', () => {
       };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, data);
 
       const settings = await manager.fetchSettings();

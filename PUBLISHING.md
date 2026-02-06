@@ -125,7 +125,7 @@ See [README](https://github.com/kanopi/wp-ai-indexer#readme) for usage instructi
 
 - [ ] Verify package appears on https://npmjs.com/package/@kanopi/wp-ai-indexer
 - [ ] Test installation from npm on clean machine
-- [ ] Update wp-ai-assistant plugin to use published package
+- [ ] Update semantic-knowledge plugin to use published package
 - [ ] Announce release (Slack, blog post, etc.)
 
 ## Troubleshooting

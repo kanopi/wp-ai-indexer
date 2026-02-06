@@ -25,7 +25,7 @@ export class SettingsManager {
     }
 
     const settingsUrl = this.config.settingsUrl ||
-      `${this.config.wpApiBase}/wp-json/ai-assistant/v1/indexer-settings`;
+      `${this.config.wpApiBase}/wp-json/semantic-knowledge/v1/indexer-settings`;
 
     try {
       this.log('Fetching indexer settings from:', settingsUrl);

@@ -34,7 +34,7 @@ npm install -g @kanopi/wp-ai-indexer
 - WordPress Application Password (recommended for secure authentication)
 - OpenAI API key
 - Pinecone API key
-- WP AI Assistant plugin (provides `/wp-json/ai-assistant/v1/indexer-settings` endpoint)
+- Semantic Knowledge plugin (provides `/wp-json/semantic-knowledge/v1/indexer-settings` endpoint)
 
 ## Configuration
 
@@ -53,7 +53,7 @@ WP_API_USERNAME=your-admin-username
 WP_API_PASSWORD=xxxx xxxx xxxx xxxx xxxx xxxx  # Application Password
 
 # Optional
-WP_AI_SETTINGS_URL=https://your-site.com/wp-json/ai-assistant/v1/indexer-settings
+WP_AI_SETTINGS_URL=https://your-site.com/wp-json/semantic-knowledge/v1/indexer-settings
 WP_AI_DEBUG=1
 WP_AI_TIMEOUT_MS=30000
 WP_AI_CONCURRENCY=2
@@ -86,7 +86,7 @@ The indexer supports WordPress Application Passwords for secure authentication:
 
 The indexer fetches configuration from WordPress via the shared settings endpoint:
 
-**Endpoint:** `GET /wp-json/ai-assistant/v1/indexer-settings`
+**Endpoint:** `GET /wp-json/semantic-knowledge/v1/indexer-settings`
 
 **Required Response Fields:**
 
@@ -113,7 +113,7 @@ The indexer fetches configuration from WordPress via the shared settings endpoin
 
 ### WP-CLI Commands (WordPress Plugin Integration)
 
-If you have the WP AI Assistant WordPress plugin installed, you can use WordPress-native commands:
+If you have the Semantic Knowledge WordPress plugin installed, you can use WordPress-native commands:
 
 ```bash
 # Index all content
@@ -233,7 +233,7 @@ The indexer is composed of modular components:
 
 ## Integration
 
-This indexer is designed to work with the **WP AI Assistant** plugin, which provides:
+This indexer is designed to work with the **Semantic Knowledge** plugin, which provides:
 
 - **AI Chatbot**: RAG-based conversational AI using indexed content
 - **Semantic Search**: AI-powered search using vector similarity
@@ -241,7 +241,7 @@ This indexer is designed to work with the **WP AI Assistant** plugin, which prov
 
 The plugin and indexer share:
 - The same Pinecone index
-- The same indexer settings endpoint (`/wp-json/ai-assistant/v1/indexer-settings`)
+- The same indexer settings endpoint (`/wp-json/semantic-knowledge/v1/indexer-settings`)
 - The same index schema (enforced by `schema_version`)
 - Automatic domain-based filtering for multi-environment setups
 
@@ -350,8 +350,8 @@ Authentication is required:
 ### "Failed to fetch settings"
 
 - Ensure WordPress site is accessible
-- Verify the settings endpoint exists: `/wp-json/ai-assistant/v1/indexer-settings`
-- Check that WP AI Assistant plugin is activated
+- Verify the settings endpoint exists: `/wp-json/semantic-knowledge/v1/indexer-settings`
+- Check that Semantic Knowledge plugin is activated
 - If using authentication, verify credentials are correct
 
 ### "REST API access restricted"

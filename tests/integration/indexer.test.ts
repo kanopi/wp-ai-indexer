@@ -38,7 +38,7 @@ describe('Indexer Integration', () => {
     it('should complete full indexing workflow', async () => {
       // Mock settings endpoint
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       // Mock WordPress posts endpoints
@@ -80,7 +80,7 @@ describe('Indexer Integration', () => {
       };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       nock('https://test.example.com')
@@ -113,7 +113,7 @@ describe('Indexer Integration', () => {
       };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       nock('https://test.example.com')
@@ -140,7 +140,7 @@ describe('Indexer Integration', () => {
 
     it('should return error on fatal failure', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(500, 'Internal Server Error');
 
       const result = await indexer.index();
@@ -158,7 +158,7 @@ describe('Indexer Integration', () => {
       };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       nock('https://test.example.com')
@@ -184,7 +184,7 @@ describe('Indexer Integration', () => {
 
     it('should track progress correctly', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       nock('https://test.example.com')
@@ -215,7 +215,7 @@ describe('Indexer Integration', () => {
   describe('clean', () => {
     it('should clean deleted posts from index', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, { ...settingsFixture, clean_deleted: true });
 
       // Mock WordPress posts - only post ID 1 exists
@@ -239,7 +239,7 @@ describe('Indexer Integration', () => {
 
     it('should skip cleaning if disabled in settings', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, { ...settingsFixture, clean_deleted: false });
 
       await expect(indexer.clean()).resolves.not.toThrow();
@@ -247,7 +247,7 @@ describe('Indexer Integration', () => {
 
     it('should handle errors during cleaning', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(500, 'Internal Server Error');
 
       await expect(indexer.clean()).rejects.toThrow();
@@ -257,7 +257,7 @@ describe('Indexer Integration', () => {
   describe('deleteAll', () => {
     it('should delete all vectors for domain', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       await expect(indexer.deleteAll()).resolves.not.toThrow();
@@ -265,7 +265,7 @@ describe('Indexer Integration', () => {
 
     it('should handle errors during deletion', async () => {
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(500, 'Internal Server Error');
 
       await expect(indexer.deleteAll()).rejects.toThrow();
@@ -301,7 +301,7 @@ describe('Indexer Integration', () => {
       };
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       nock('https://test.example.com')
@@ -336,7 +336,7 @@ describe('Indexer Integration', () => {
         }));
 
       nock('https://test.example.com')
-        .get('/wp-json/ai-assistant/v1/indexer-settings')
+        .get('/wp-json/semantic-knowledge/v1/indexer-settings')
         .reply(200, settingsFixture);
 
       nock('https://test.example.com')
