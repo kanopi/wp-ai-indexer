@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(beads:init)",
+      "Bash(bd init:*)",
+      "Bash(bd create:*)",
+      "Bash(bd list:*)",
+      "Bash(bd ready:*)",
+      "Bash(bd show:*)",
+      "Bash(bd update:*)",
+      "Bash(bd close:*)",
+      "Bash(npm test)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(bd sync:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(bd stats:*)",
+      "Bash(npm version:*)",
+      "Bash(git push:*)",
+      "Bash(npm pack:*)",
+      "Bash(tar:*)",
+      "Bash(npm publish:*)",
+      "Bash(npm pkg:*)"
+    ]
+  }
+}
